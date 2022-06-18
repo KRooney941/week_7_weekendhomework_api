@@ -1,18 +1,15 @@
 import React from "react";
 
-const HeroSelect = ({allHeroes, onHeroSelected}) => {
+const HeroSelect = ({heroes, onHeroSelected}) => {
 
-    const heroOptions = allHeroes.map((hero, id) => {
-        return <option key={id} value={id}>{hero.localized_name}</option>
-    })
-
-
-    const handleChange = (event) => {
-        const chosenHero = allHeroes[event.target.value]
+ const handleChange = function(event) {
+        const chosenHero = heroes[event.target.value]
         onHeroSelected(chosenHero)
     }
 
-
+ const heroOptions = heroes.map((hero, id) => {
+        return <option key={id} value={id}>{hero.localized_name}</option>
+    })
 
   return (
       <select onChange={handleChange}>

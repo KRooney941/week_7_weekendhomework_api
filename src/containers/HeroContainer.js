@@ -5,15 +5,18 @@ import HeroSelect from "../components/HeroSelect";
 
 
 const HeroContainer = () => {
-    const [hero, setHero] = useState([]);
+    const [heroes, setHeroes] = useState([]);
     const [selectedHero, setSelectedHero] = useState([])
 
-
     useEffect(() => {
+        getHeroes();
+    }, [])
+
+    const getHeroes = function(){
         fetch("https://api.opendota.com/api/heroes")
         .then(res => res.json())
-        .then(data => setHero(data))
-      }, []);
+        .then(heroes => setHeroes(heroes))
+      };
 
       const onHeroSelected = function(hero){
           setSelectedHero(hero)
@@ -22,8 +25,8 @@ const HeroContainer = () => {
     return (
         <>
             <Header/>
-            <HeroSelect allHeroes ={hero} onHeroSelected = {onHeroSelected}/>
-            { selectedHero ? <HeroDetail hero ={selectedHero}/> : null}
+            <HeroSelect heroes ={heroes} onHeroSelected = {onHeroSelected}/>
+            { selectedHero ? <HeroDetail selectedHero={selectedHero}/> : null}
         </>
     )
 

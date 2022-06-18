@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
+import HeroContainer from "../containers/HeroContainer";
 
-const HeroDetail = ({hero}) => {
+const HeroDetail = ({selectedHero}) => {
 
     // const [roles, setRoles] = useState(0)
 
@@ -11,11 +12,11 @@ const HeroDetail = ({hero}) => {
 
     return (
         <div>
-            <h2>Name: {hero.localized_name}</h2>
-            <p>Primary Attribute: {hero.primary_attr}</p>
-            <p>Attack Type: {hero.attack_type}</p>
-            <p>No of Legs:{hero.legs}</p>
-            <p>Roles: {hero.roles}</p>
+            <h2>Name: {selectedHero.localized_name}</h2>
+            <p>Primary Attribute: {selectedHero.primary_attr}</p>
+            <p>Attack Type: {selectedHero.attack_type}</p>
+            <p>No of Legs:{selectedHero.legs}</p>
+            <p>Roles: {selectedHero.roles}</p>
         </div>
     )
 }
